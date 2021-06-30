@@ -43,13 +43,12 @@
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
         android:hint="Send Notification"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/sign_out"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
-        app:layout_constraintVertical_bias="0.557"
         app:rippleColor="@color/colorPrimaryDark" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -77,12 +76,27 @@
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="84dp"
+        android:layout_marginBottom="64dp"
         android:hint="Sign out"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:rippleColor="@color/colorPrimaryDark" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/blog_link"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Read full blog here"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/sign_out"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/send_notif"
+        app:rippleColor="@color/colorPrimaryDark" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

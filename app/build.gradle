@@ -54,5 +54,6 @@ dependencies {
     implementation(platform("com.squareup.okhttp3:okhttp-bom:4.9.1"))
     // define any required OkHttp artifacts without version
     implementation("com.squareup.okhttp3:okhttp")
+    implementation "androidx.browser:browser:1.3.0"
 
 }

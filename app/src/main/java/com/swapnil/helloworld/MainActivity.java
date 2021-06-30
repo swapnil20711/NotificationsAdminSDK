@@ -2,6 +2,7 @@ package com.swapnil.helloworld;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -9,6 +10,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.core.content.ContextCompat;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -83,6 +86,43 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        binding.blogLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = "https://medium.com/@swapnil20711/firebase-push-notifications-android-using-admin-sdk-617d2c0be130";
+                // initializing object for custom chrome tabs.
+                CustomTabsIntent.Builder customIntent = new CustomTabsIntent.Builder();
+
+                // below line is setting toolbar color
+                // for our custom chrome tab.
+                customIntent.setToolbarColor(ContextCompat.getColor(MainActivity.this, R.color.black));
+
+                // we are calling below method after
+                // setting our toolbar color.
+                openCustomTab(MainActivity.this, customIntent.build(), Uri.parse(url));
+            }
+        });
+    }
+    public static void openCustomTab(Activity activity, CustomTabsIntent customTabsIntent, Uri uri) {
+        // package name is the default package
+        // for our custom chrome tab
+        String packageName = "com.android.chrome";
+        if (packageName != null) {
+
+            // we are checking if the package name is not null
+            // if package name is not null then we are calling
+            // that custom chrome tab with intent by passing its
+            // package name.
+            customTabsIntent.intent.setPackage(packageName);
+
+            // in that custom tab intent we are passing
+            // our url which we have to browse.
+            customTabsIntent.launchUrl(activity, uri);
+        } else {
+            // if the custom tabs fails to load then we are simply
+            // redirecting our user to users device default browser.
+            activity.startActivity(new Intent(Intent.ACTION_VIEW, uri));
+        }
     }
     public static void hideKeyboard(Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
